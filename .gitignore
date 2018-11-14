@@ -1,3 +1,6 @@
+build/
+DerivedData/
+
 # Prerequisites
 *.d
 
@@ -41,8 +44,7 @@ obj/
 # Xcode
 *.xcodeproj
 *.xcodeproj/
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
+
 
 # CLion
 .idea/
