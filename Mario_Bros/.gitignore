@@ -39,6 +39,8 @@ bin/
 obj/
 
 # Xcode
+*/*.xcodeproj
+*/*.xcodeproj/
 *.xcodeproj
 *.xcodeproj/
 
