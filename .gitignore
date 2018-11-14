@@ -41,6 +41,7 @@ obj/
 # Xcode
 *.xcodeproj
 *.xcodeproj/
+DerivedData/
 
 # CLion
 .idea/
