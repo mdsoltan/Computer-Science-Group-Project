@@ -1,6 +1,3 @@
-build/
-DerivedData/
-
 # Prerequisites
 *.d
 
@@ -44,6 +41,8 @@ obj/
 # Xcode
 *.xcodeproj
 *.xcodeproj/
+/*.xcodeproj
+/*.xcodeproj/
 
 
 # CLion
