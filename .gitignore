@@ -41,7 +41,6 @@ obj/
 # Xcode
 *.xcodeproj
 *.xcodeproj/
-/Mario_Bros.xcodeproj
 
 
 # CLion
