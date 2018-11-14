@@ -40,8 +40,9 @@ obj/
 
 # Xcode
 *.xcodeproj
+*.xcodeproj/
 *.xcodeproj/*
-DerivedData/
+!*.xcodeproj/project.pbxproj
 
 # CLion
 .idea/
