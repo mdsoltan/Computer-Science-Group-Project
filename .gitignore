@@ -40,7 +40,7 @@ obj/
 
 # Xcode
 *.xcodeproj
-*.xcodeproj/
+*.xcodeproj/*
 DerivedData/
 
 # CLion
