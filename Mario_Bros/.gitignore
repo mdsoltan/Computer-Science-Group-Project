@@ -39,10 +39,9 @@ bin/
 obj/
 
 # Xcode
-*/*.xcodeproj
-*/*.xcodeproj/
 *.xcodeproj
 *.xcodeproj/
+DerivedData/
 
 # CLion
 .idea/
