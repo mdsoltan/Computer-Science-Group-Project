@@ -20,10 +20,14 @@ private:
 public:
     Mario(ifstream &fin);
     
-    void setSprite();
+    bool setSprite(ifstream &fin, string name);
     
-    void moveRight(int &x, int &y);
-    void moveLeft(int &x, int &y);
+    void moveRight();
+    void moveLeft();
+    
+    Sprite getSprite() const;
+    int getXPos() const;
+    int getYPos() const;
     
 };
 

@@ -13,6 +13,7 @@ Sprite::Sprite() {
     col = 0;
 }
 
+//***** Uses main's ifstream to read from the text file specified in "name" *****
 Sprite::Sprite(ifstream &fin, string name) {
     int r, g, b;
     
@@ -36,6 +37,7 @@ Sprite::Sprite(ifstream &fin, string name) {
     fin.close();
 }
 
+//***** Uses main's ifstream to read from the text file specified in "name" *****
 bool Sprite::loadFrame(ifstream &fin, string name) {
     int r, g, b;
     
@@ -61,6 +63,7 @@ bool Sprite::loadFrame(ifstream &fin, string name) {
     return true;
 }
 
+//***** Draws Sprite normally *****
 void Sprite::draw(SDL_Plotter &plotter, int x, int y) const{
     int r, g, b;
     for(int i = 0; i < row; i++) {
@@ -73,6 +76,7 @@ void Sprite::draw(SDL_Plotter &plotter, int x, int y) const{
     }
 }
 
+//***** Draws Sprite backwards (if it was facing right, it now faces left) *****
 void Sprite::drawReverse(SDL_Plotter &plotter, int x, int y) const{
     int r, g, b;
     for(int i = 0; i < row; i++) {
@@ -85,6 +89,7 @@ void Sprite::drawReverse(SDL_Plotter &plotter, int x, int y) const{
     }
 }
 
+//***** Draws Sprite upside-down *****
 void Sprite::drawFlipped(SDL_Plotter &plotter, int x, int y) const{
     int r, g, b;
     for(int i = 0; i < row; i++) {
@@ -97,6 +102,7 @@ void Sprite::drawFlipped(SDL_Plotter &plotter, int x, int y) const{
     }
 }
 
+//***** Draws Sprite backwards and upside down *****
 void Sprite::drawRevFlip(SDL_Plotter &plotter, int x, int y) const{
     int r, g, b;
     for(int i = 0; i < row; i++) {
@@ -109,14 +115,17 @@ void Sprite::drawRevFlip(SDL_Plotter &plotter, int x, int y) const{
     }
 }
 
+//***** Used in draw functions *****
 int Sprite::getRow() const {
     return row;
 }
 
+//***** Used in draw functions *****
 int Sprite::getCol() const {
     return col;
 }
 
+//***** Used in draw functions *****
 Pixel Sprite::getPixel (int r, int c) const {
     return pixel_vector[r][c];
 }

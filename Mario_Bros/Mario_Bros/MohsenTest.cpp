@@ -3,6 +3,7 @@
 
 #include "SDL_Plotter.h"
 #include "Sprite.hpp"
+#include "MohsenMario.hpp"
 
 using namespace std;
 
@@ -21,9 +22,9 @@ int main(int argc, char ** argv)
     bool stopped = false;
     int x = 0, y = 0;
     int R,G,B;
-    Sprite Mario;
+    Mario mario(fin);
     
-    bool marioLoad = Mario.loadFrame(fin, "Mario_Idle.txt");
+    bool marioLoad = mario.setSprite(fin, "Mario_Idle.txt");
     
     while (!g.getQuit())
     {
@@ -45,24 +46,24 @@ int main(int argc, char ** argv)
 //            }
             
             
-            if(marioLoad) {
-                Mario.drawFlipped(g, 300, 300);
-                Mario.draw(g, 400, 400);
-                Mario.drawRevFlip(g, 500, 500);
-                Mario.drawReverse(g, 600, 600);
+            if(!marioLoad) {
+                cout << "Sprite Load Failed!" << endl;
+                exit(1);
             }
+            
 
                 }
 
         if(g.kbhit()) {
-            if(g.getKey() == RIGHT_ARROW)
-                x += 10;
-            if(g.getKey() == LEFT_ARROW)
-                x -= 10;
-            if(g.getKey() == DOWN_ARROW)
-                y += 10;
-            if(g.getKey() == UP_ARROW)
-                y -= 10;
+            if(g.getKey() == RIGHT_ARROW) {
+                mario.moveRight();
+                mario.getSprite().draw(g, mario.getXPos(), mario.getYPos());
+            } else if(g.getKey() == LEFT_ARROW) {
+                mario.moveLeft();
+                mario.getSprite().drawReverse(g, mario.getXPos(), mario.getYPos());
+            }
+        } else {
+            mario.getSprite().draw(g, mario.getXPos(), mario.getYPos());
         }
         
         g.update();
