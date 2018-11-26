@@ -13,3 +13,5 @@ Mario::Mario(ifstream &fin) {
     xPos = 500;
     yPos = 500;
 }
+
+

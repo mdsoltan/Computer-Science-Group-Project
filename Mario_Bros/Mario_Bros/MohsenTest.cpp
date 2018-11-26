@@ -39,14 +39,17 @@ int main(int argc, char ** argv)
                     g.plotPixel(j, i, 255, 255, 255);
             }
 
-            for(int i = 0; i < 100; i++) {
-                for(int j = 0; j < 100; j++)
-                    g.plotPixel(j + x, i + y, R, G, B);
-            }
+//            for(int i = 0; i < 100; i++) {
+//                for(int j = 0; j < 100; j++)
+//                    g.plotPixel(j + x, i + y, R, G, B);
+//            }
             
             
             if(marioLoad) {
-                Mario.draw(g);
+                Mario.drawFlipped(g, 300, 300);
+                Mario.draw(g, 400, 400);
+                Mario.drawRevFlip(g, 500, 500);
+                Mario.drawReverse(g, 600, 600);
             }
 
                 }
