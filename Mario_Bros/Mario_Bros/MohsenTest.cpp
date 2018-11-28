@@ -4,6 +4,7 @@
 #include "SDL_Plotter.h"
 #include "Sprite.hpp"
 #include "MohsenMario.hpp"
+#include "Shellcreeper.h"
 
 using namespace std;
 
@@ -19,12 +20,16 @@ int main(int argc, char ** argv)
     
     SDL_Plotter g(1000,1000);
     ifstream fin;
+    ifstream sfin;
+    ifstream sfinf; //Flipped koopa
     bool stopped = false;
     int x = 0, y = 0;
     int R,G,B;
     Mario mario(fin);
+    s_movement koopa(sfin);
     
     bool marioLoad = mario.setSprite(fin, "Mario_Idle.txt");
+    bool koopaLoad = mario.setSprite(sfin, "Shellcreepr.txt");
     
     while (!g.getQuit())
     {
@@ -37,7 +42,7 @@ int main(int argc, char ** argv)
 
             for(int i = 0; i < 1000; i++) {
                 for(int j = 0; j < 1000; j++)
-                    g.plotPixel(j, i, 0, 0, 0);
+                    g.plotPixel(j, i, 255, 255, 255);
             }
 
 //            for(int i = 0; i < 100; i++) {
@@ -50,6 +55,7 @@ int main(int argc, char ** argv)
                 cout << "Sprite Load Failed!" << endl;
                 exit(1);
             }
+
             
 
                 }
@@ -64,6 +70,18 @@ int main(int argc, char ** argv)
             }
         } else {
             mario.getSprite().draw(g, mario.getXPos(), mario.getYPos());
+        }
+
+        if(g.kbhit()) {
+            if(g.getKey() == '1') {
+                koopa.moveLeft();
+                koopa.getSprite().drawReverse(g, koopa.getXPos(), koopa.getYPos());
+            } else if(g.getKey() == '2') {
+                koopa.flipped(sfinf);
+            }
+        } else {
+            koopa.moveRight();
+            koop.getSprite().draw(g, mario.getXPos(), mario.getYPos());
         }
         
         g.update();
