@@ -26,10 +26,10 @@ int main(int argc, char ** argv)
     int x = 0, y = 0;
     int R,G,B;
     Mario mario(fin);
-    s_movement koopa(sfin);
+//    s_movement koopa(sfin);
     
     bool marioLoad = mario.setSprite(fin, "Mario_Idle.txt");
-    bool koopaLoad = mario.setSprite(sfin, "Shellcreepr.txt");
+//    bool koopaLoad = koopa.setSprite(sfin, "Shellcreepr.txt");
     
     while (!g.getQuit())
     {
@@ -55,6 +55,11 @@ int main(int argc, char ** argv)
                 cout << "Sprite Load Failed!" << endl;
                 exit(1);
             }
+            
+//            if(!koopaLoad){
+//                cout << "Koopa load failed!" << endl;
+//                exit(2);
+//            }
 
             
 
@@ -72,17 +77,17 @@ int main(int argc, char ** argv)
             mario.getSprite().draw(g, mario.getXPos(), mario.getYPos());
         }
 
-        if(g.kbhit()) {
-            if(g.getKey() == '1') {
-                koopa.moveLeft();
-                koopa.getSprite().drawReverse(g, koopa.getXPos(), koopa.getYPos());
-            } else if(g.getKey() == '2') {
-                koopa.flipped(sfinf);
-            }
-        } else {
-            koopa.moveRight();
-            koop.getSprite().draw(g, mario.getXPos(), mario.getYPos());
-        }
+//        if(g.kbhit()) {
+//            if(g.getKey() == '1') {
+//                koopa.moveLeft();
+//                koopa.getSprite().drawReverse(g, koopa.getXPos(), koopa.getYPos());
+//            } else if(g.getKey() == '2') {
+//                koopa.flipped(sfinf);
+//            }
+//        } else {
+//            koopa.moveRight();
+//            koopa.getSprite().draw(g, koopa.getXPos(), koopa.getYPos());
+//        }
         
         g.update();
     }
