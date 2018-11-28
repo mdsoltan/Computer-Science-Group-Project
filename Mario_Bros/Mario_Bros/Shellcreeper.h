@@ -14,8 +14,7 @@ class s_movement {
         int xPos, yPos;
     public:
         Shellcreeper(ifstream &fin);
-        void move(SDL_Surface* sprite, SDL_Rect rcSprite, SDL_Window* &window, SDL_Surface* &screen,
-                const int SCREEN_WIDTH, const int SCREEN_HEIGHT, const int SPRITE_SIZE, const int SPRITE_HEIGHT);
+        
         bool setSprite(ifstream &fin, string name);
 
         void moveRight();
