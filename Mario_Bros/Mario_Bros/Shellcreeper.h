@@ -6,7 +6,6 @@
 #define ENEMY_SHELLCREEPER_2_S_MOVEMENT_H
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
 
 class s_movement {
     private:
@@ -14,7 +13,7 @@ class s_movement {
         int xPos, yPos;
     public:
         Shellcreeper(ifstream &fin);
-        
+
         bool setSprite(ifstream &fin, string name);
 
         void moveRight();
