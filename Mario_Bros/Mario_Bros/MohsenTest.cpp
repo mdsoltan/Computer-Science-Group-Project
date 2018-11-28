@@ -37,7 +37,7 @@ int main(int argc, char ** argv)
 
             for(int i = 0; i < 1000; i++) {
                 for(int j = 0; j < 1000; j++)
-                    g.plotPixel(j, i, 255, 255, 255);
+                    g.plotPixel(j, i, 0, 0, 0);
             }
 
 //            for(int i = 0; i < 100; i++) {
