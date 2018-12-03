@@ -3,7 +3,7 @@ Group project for Intro to Comp Sci
 
 
 *****NOTICE*****
-The *Final Project* folder has all the necessary files for our final product. 
+The *Final Product* folder has all the necessary files for our final product. 
 
 Since we developed on different machines, we could not include any IDE specific files.
 
