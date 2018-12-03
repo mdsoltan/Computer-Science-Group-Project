@@ -29,9 +29,7 @@ int main(int argc, char ** argv)
     bool shouldMoveBack2 = false;
     bool isHit = false;
     bool isFlipped2 = false;
-
-    g.initSound("Test_Song.mp3");
-    g.playSound("Test_Song.mp3");
+    
     while (!g.getQuit())
     {
 
