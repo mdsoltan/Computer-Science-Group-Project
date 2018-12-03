@@ -8,26 +8,48 @@
 using namespace std;
 
 s_movement::s_movement(ifstream &fin) {
-    sprite = Sprite(fin, "Shellcreeper_Idle.txt");
-    xPos = 500;
-    yPos = 500;
+    xPos = 100;
+    yPos = 100;
+    gravity = 0.2;
+    yVelocity = 0;
 }
 
 bool s_movement:: setSprite(ifstream &fin, string name) {
-    return sprite.loadFrame(fin, name.c_str());
+    bool success = sprite.loadFrame(fin, name.c_str());
+    collider.setup(xPos, yPos, sprite.getCol(), sprite.getRow(), 'E');
+    return success;
 }
 
-void s_movement::moveRight() {
-    xPos += 2;
-}
-
-void s_movement::moveLeft() {
-    xPos -= 2;
+void s_movement::moveX() {
+    if(moveRight) {
+        if(xPos >= 1000) {
+            xPos = 0;
+        } else {
+            xPos += 1;
+        }
+        collider.update(xPos, yPos);
+        sprite.setFacingRight(true);
+    } else if(moveLeft) {
+        if(xPos <= 0) {
+            xPos = 1000;
+        } else {
+            xPos -= 1;
+        }
+        collider.update(xPos, yPos);
+        sprite.setFacingRight(false);
+    }
 }
 
 void s_movement::moveDown(){
-    if(yPos < 700){
-        yPos += 3;
+    if(yVelocity > -3) {
+        yVelocity -= gravity;
+    }
+    
+    yPos += -yVelocity;
+    collider.update(xPos, yPos);
+    
+    if(yPos < 0) {
+        yPos = 0;
     }
 }
 
@@ -48,8 +70,49 @@ int s_movement::getYPos() const {
 }
 
 void s_movement::flipped(ifstream &fin){
-   sprite = Sprite(fin, "Shellcreeper_Flipped.txt");
+   sprite.loadFrame(fin, "Shellcreeper_Flipped.txt");
 }
 
 
 
+void s_movement::checkCollisionX(Wall b) {
+    if(collider.checkCollision(b.getCollider())) {
+        if(sprite.getFacingRight()) {
+            xPos += 10;
+            collider.update(xPos, yPos);
+        } else {
+            xPos -= 10;
+            collider.update(xPos, yPos);
+        }
+    }
+}
+
+void s_movement::checkCollisionY(Wall b) {
+    if(collider.checkCollision(b.getCollider())) {
+        yPos -= -yVelocity;
+        yVelocity = -1;
+        collider.update(xPos, yPos);
+    }
+}
+
+void s_movement::draw(SDL_Plotter &plotter) {
+    sprite.draw(plotter, xPos, yPos);
+}
+
+void s_movement::inPipe(Wall b) {
+    if(collider.checkCollision(b.getCollider())) {
+        if(sprite.getFacingRight()) {
+            xPos = 800;
+            yPos = 100;
+            collider.update(xPos, yPos);
+            moveLeft = true;
+            moveRight = false;
+        } else {
+            xPos = 100;
+            yPos = 100;
+            collider.update(xPos, yPos);
+            moveRight = true;
+            moveLeft = false;
+        }
+    }
+}

@@ -16,8 +16,6 @@ Sprite::Sprite() {
 }
 
 //***** Uses main's ifstream to read from the text file specified in "name" *****
-
-//***** Uses main's ifstream to read from the text file specified in "name" *****
 bool Sprite::loadFrame(ifstream &fin, string name) {
     int r, g, b;
     
