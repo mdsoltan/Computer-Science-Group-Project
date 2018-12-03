@@ -12,7 +12,7 @@ class s_movement {
         Sprite sprite;
         int xPos, yPos;
     public:
-        Shellcreeper(ifstream &fin);
+        s_movement(ifstream &fin);
 
         bool setSprite(ifstream &fin, string name);
 

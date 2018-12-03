@@ -110,10 +110,9 @@ bool SDL_Plotter::kbhit(){
     return flag;
 }
 
-char SDL_Plotter::getKey(){
+char SDL_Plotter::getKey(bool &l, bool &r, bool &space){
     
     char key = '\0';
-    
     
     currentKeyStates = SDL_GetKeyboardState( NULL );
     if(currentKeyStates[SDL_SCANCODE_A]) key = 'A';
@@ -152,11 +151,11 @@ char SDL_Plotter::getKey(){
     if(currentKeyStates[SDL_SCANCODE_8]) key = '8';
     if(currentKeyStates[SDL_SCANCODE_9]) key = '9';
     if(currentKeyStates[SDL_SCANCODE_0]) key = '0';
-    if(currentKeyStates[SDL_SCANCODE_SPACE]) key = ' ';
+    if(currentKeyStates[SDL_SCANCODE_SPACE]) space = true;
     if(currentKeyStates[SDL_SCANCODE_DOWN])  key = DOWN_ARROW;
     if(currentKeyStates[SDL_SCANCODE_UP])    key = UP_ARROW;
-    if(currentKeyStates[SDL_SCANCODE_LEFT])  key = LEFT_ARROW;
-    if(currentKeyStates[SDL_SCANCODE_RIGHT]) key = RIGHT_ARROW;
+    if(currentKeyStates[SDL_SCANCODE_LEFT])  l = true;
+    if(currentKeyStates[SDL_SCANCODE_RIGHT]) r = true;
     if(currentKeyStates[SDL_SCANCODE_RETURN]) key = SDL_SCANCODE_RETURN;
     if(currentKeyStates[SDL_SCANCODE_ESCAPE]) quit = true;
     

@@ -95,7 +95,7 @@ public:
     
     bool kbhit();
     
-    char getKey();
+    char getKey(bool &l, bool &r, bool &space);
     
     void plotPixel(int x, int y, int r, int g, int b);
     

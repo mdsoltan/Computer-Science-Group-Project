@@ -49,21 +49,23 @@ class Sprite {
 private:
     int row, col;
     vector<vector<Pixel>> pixel_vector;
+    bool facingRight, upsideDown;
     
 public:
     Sprite();
-    Sprite(ifstream &fin, string name);
+//    Sprite(ifstream &fin, string name);
     bool loadFrame(ifstream &fin, string name);
     
     void draw(SDL_Plotter &plotter, int x, int y) const;
-    void drawReverse(SDL_Plotter &plotter, int x, int y) const;
-    void drawFlipped(SDL_Plotter &plotter, int x, int y) const;
-    void drawRevFlip(SDL_Plotter &plotter, int x, int y) const;
     
     int getRow() const;
     int getCol() const;
     Pixel getPixel(int r, int c) const;
+    bool getFacingRight() const;
+    bool getUpsideDown() const;
     
+    void setFacingRight(bool);
+    void setUpsideDown(bool);
     
 };
 
